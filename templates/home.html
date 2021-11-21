@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+
+<br>
+
+    <form class="form-inline" method='POST' action="{{url_for('addtask')}}">
+      <input type="text" name="task" class="form-control mr-sm-2" placeholder="add..." aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Task</button>
+    </form>
+
+
+<br><br><br><br>
+
+    
+
+        {% for task in tasks %}
+        <ul class="list-group">
+            <li class="list-group-item" aria-current="true">{{task.task}}
+             <a href="{{url_for('edititem', id=task.id)}}" class="btn btn-primary">Edit</a>
+             <a href="{{url_for('deleteitem', id=task.id)}}" class="btn btn-danger">Delete</a>
+             {% if task.completed == True %}
+            <button class="btn btn-success">Completed</button>
+            {% else %}
+            <form action="{{url_for('complete', id=task.id)}}" method="post">
+                <button class="btn btn-warning">NotComplete</button>
+            </form>
+            {% endif %}
+            </li>
+        </ul>
+        {% endfor %}
+
+{% endblock %}

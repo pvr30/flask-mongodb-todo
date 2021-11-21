@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Edit {% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 100px;">
+    <h1>Update task</h1><br>
+
+        <form method="POST" action="{{url_for('edititem', id=task.id)}}" class="form-inline">
+            <input name="task" type="text" value="{{task.task}}" class="form-control mr-sm-2">
+            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Edit</button>
+        </form>    
+    </div>
+    
+
+{% endblock %}

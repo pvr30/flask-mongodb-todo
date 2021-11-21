@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} DeleteTask {% endblock %}
+
+{% block content %}
+
+    <div class="container" style="margin-top: 100px;">
+    <h1>Delete task</h1><br>
+    <h4>Are you sure you want to delete  {{task.task}}?</h4><br>
+
+        <form method="POST" action="{{url_for('deleteitem', id=task.id)}}" class="form-inline">
+            <button type="" class="btn btn-outline-danger my-2 my-sm-0">Confirm Delete</button>
+        </form>    
+    </div><br>
+    
+    <a href="{{url_for('home')}}" class="btn btn-warning">Cancel</a>
+
+{% endblock %}
